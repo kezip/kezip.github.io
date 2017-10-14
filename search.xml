@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[删除node_modules文件夹，解决目录层次太深删除报错的问题]]></title>
     <url>%2F2017%2F10%2F15%2F%E5%88%A0%E9%99%A4node-modules%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E8%A7%A3%E5%86%B3%E7%9B%AE%E5%BD%95%E5%B1%82%E6%AC%A1%E5%A4%AA%E6%B7%B1%E5%88%A0%E9%99%A4%E6%8A%A5%E9%94%99%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[问题描述在使用gulp中，自动生成的node_modules文件夹，因为文件目录太深，无法系统删除，报错。 解决办法： 121. 安装：npm install rimraf -g (全局安装)2. 使用：先定位到目标文件夹的父级目录，然后在命令行输入：rimraf node_modules(也就是目标文件夹) ​]]></content>
+    <content type="text"><![CDATA[问题描述在使用gulp中，自动生成的node_modules文件夹，因为文件目录太深，无法系统删除，报错。 解决办法： 121. 安装：npm install rimraf -g (全局安装)2. 使用：先定位到目标文件夹的父级目录，然后在命令行输入：rimraf node_modules(也就是目标文件夹) 示例如下：]]></content>
       <categories>
         <category>前端开发</category>
       </categories>
