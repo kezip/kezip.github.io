@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[解决端口占用的方法：Error:listen EADDRINUSE]]></title>
+    <url>%2F2017%2F10%2F20%2F%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9AError-listen-EADDRINUSE%2F</url>
+    <content type="text"><![CDATA[《问题描述》——-解决方法： 12341.在命令行中输入：netsat -aon|findstr &quot;xxxx&quot;,如(8080)找到端口号监听的位置。查看是否有程序占用端口。2.再输入tasklist|findstr &quot;xxxx&quot; 如(1884),显示，node.exe占用了端口。3.ok，接下来找到进程，把node进程结束，关掉控制台。4.然后重新运行即可解决。]]></content>
+      <categories>
+        <category>前端开发</category>
+      </categories>
+      <tags>
+        <tag>端口被占用 常见端口占用的问题 端口占用的解决方法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[删除node_modules文件夹，解决目录层次太深删除报错的问题]]></title>
     <url>%2F2017%2F10%2F15%2F%E5%88%A0%E9%99%A4node-modules%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E8%A7%A3%E5%86%B3%E7%9B%AE%E5%BD%95%E5%B1%82%E6%AC%A1%E5%A4%AA%E6%B7%B1%E5%88%A0%E9%99%A4%E6%8A%A5%E9%94%99%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[问题描述在使用gulp中，自动生成的node_modules文件夹，因为文件目录太深，无法系统删除，报错。 解决办法： 121. 安装：npm install rimraf -g (全局安装)2. 使用：先定位到目标文件夹的父级目录，然后在命令行输入：rimraf node_modules(也就是目标文件夹) 示例如下：]]></content>
