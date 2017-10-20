@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[解决端口占用的方法：Error:listen EADDRINUSE]]></title>
     <url>%2F2017%2F10%2F20%2F%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9AError-listen-EADDRINUSE%2F</url>
-    <content type="text"><![CDATA[《问题描述》——-解决方法： 12341.在命令行中输入：netsat -aon|findstr &quot;xxxx&quot;,如(8080)找到端口号监听的位置。查看是否有程序占用端口。2.再输入tasklist|findstr &quot;xxxx&quot; 如(1884),显示，node.exe占用了端口。3.ok，接下来找到进程，把node进程结束，关掉控制台。4.然后重新运行即可解决。]]></content>
+    <content type="text"><![CDATA[《问题描述》在进行代码调试时，很容易出现端口占用的情况。——-解决方法： 12341.在命令行中输入：netsat -aon|findstr &quot;xxxx&quot;,如(8080)找到端口号监听的位置。查看是否有程序占用端口。2.再输入tasklist|findstr &quot;xxxx&quot; 如(1884),显示，node.exe占用了端口。3.ok，接下来找到进程，把node进程结束，关掉控制台。4.然后重新运行即可解决。]]></content>
       <categories>
         <category>前端开发</category>
       </categories>
