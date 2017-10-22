@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[前端开发企业级css常用命名，书写规范总结]]></title>
+    <url>%2F2017%2F10%2F22%2F%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%BC%81%E4%B8%9A%E7%BA%A7css%E5%B8%B8%E7%94%A8%E5%91%BD%E5%90%8D%EF%BC%8C%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[一、css常用命名规范1、常用命名 12345678910111213141516171819202122232425262728293031323334353637标题：title摘要：summary箭头：arrow商标：label网站标志：logo转角/圆角：corner横幅广告：banner子菜单：subMenu搜索：search搜索框：searchBox登录：login登录条：loginbar工具条：toolbar下拉：drop标签页：tab当前页：current列表：list滚动：scroll服务：service提示信息：msg热点：hot新闻：news小技巧：tips下载：download栏目标题：title加入：joinus注册：regsiter指南：guide友情链接：friendlink状态：status版权：copyright按钮：btn合作伙伴：partner投票：vote左/右/中：left/right/center简介：profiles评论：comment 2、ID命名(1)页面结构 12345678910容器：container页头：header内容：content/container页面主体：main页尾：footer导航：nav侧栏：sidear栏目：column页面外围控制整体布局宽度：wrapper左/右/中：left/right/center (2)导航 1234567891011导航：nav主导航：mainbav子导航：subnav顶导航：topnav边导航：sidebar左导航：leftsidebar右导航：rightsidebar菜单：menu子菜单：submenu标题：title摘要：summary (3)功能 12345678910111213141516171819202122232425262728标志：logo广告：banner登录：login登录条：loginbar注册：regsiter搜索：search功能区：shop标题：title加入：joinus状态：status按钮：btn滚动：scroll标签页：tab文章列表：list提示信息：msg当前的：current小技巧：tips图标：icon注释：note指南：guild服务：service热点：hot新闻：news下载：download投票：vote合作伙伴：partner友情链接：link版权：copyright 3、class命名(1)颜色：使用颜色的名称或者16进制代码，如： 123.red&#123;color:red;&#125;.f60&#123;color:#60;&#125;.ff8600&#123;color:#ff8600;&#125; (2)字体大小：直接使用“font+字体大小”作为名称，如： 12.font12px&#123;font-size:12px;&#125;.font9pt&#123;font-size:9pt;&#125; (3)对齐样式：使用对齐目标的英文名称，如： 12.left&#123;float:left;&#125;.bottom&#123;float:bottom;&#125; (4)标题栏样式：使用”类别+功能”的方式命名，如： 12.barnews&#123;&#125;.barproduct&#123;&#125; 二、推荐的css书写顺序—–相关的属性声明应当归为一组，并按照下面的顺序排列：1234PositioningBox modelTypographicVisual —–由于定位(positioning)可以从正常的文档流中移除元素，并且还能覆盖盒模型(box model)相关的样式，因此排在首位。盒模型排在第二位，因为它决定了组件的尺寸和位置。1234567891011121314151617181920212223242526xxx&#123; /*Positioning*/ position:absolute; top:0; right:0; bottom:0; left:0; z-index:100; /*Box model*/ dispaly:block; float:right; width:100px; height:120px; /*Typography*/ font:normal 16px &quot;Helvetica Neue&quot;,sans-serif; line-height:1.5; color: #ccc; text-align:center; /*Visual*/ background-color:#009480; border:1px solid skybule; border-radius: 5px;&#125;]]></content>
+      <categories>
+        <category>前端开发</category>
+      </categories>
+      <tags>
+        <tag>css常用命名</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[解决端口占用的方法：Error:listen EADDRINUSE]]></title>
     <url>%2F2017%2F10%2F20%2F%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9AError-listen-EADDRINUSE%2F</url>
     <content type="text"><![CDATA[《问题描述》在进行代码调试时，很容易出现端口占用的情况。——-解决方法： 12341.在命令行中输入：netsat -aon|findstr &quot;xxxx&quot;,如(8080)找到端口号监听的位置。查看是否有程序占用端口。2.再输入tasklist|findstr &quot;xxxx&quot; 如(1884),显示，node.exe占用了端口。3.ok，接下来找到进程，把node进程结束，关掉控制台。4.然后重新运行即可解决。]]></content>
