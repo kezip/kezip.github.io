@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端开发兼容性问题 问题总结 兼容性 ie6、ie7、ie8等," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gjp" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="前端兼容性问题总结1.如何在IE6及更早浏览器中定义小高度的容器？ IE6及更早浏览器之所以无法直接定义较小高度的容器是因为默认会有行高。 解决方法：    123456#test&amp;#123;  overflow: hidden;  height: 1px;  font-size: 0;  line-height: 0;&amp;#125; 2.如何解决IE6及更早浏览器浮动是产生双倍边距的bug? 在I">
+<meta name="keywords" content="前端开发兼容性问题 问题总结 兼容性 ie6、ie7、ie8等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端兼容性问题总结">
+<meta property="og:url" content="http://yoursite.com/2017/10/24/前端兼容性问题总结/index.html">
+<meta property="og:site_name" content="Gjp">
+<meta property="og:description" content="前端兼容性问题总结1.如何在IE6及更早浏览器中定义小高度的容器？ IE6及更早浏览器之所以无法直接定义较小高度的容器是因为默认会有行高。 解决方法：    123456#test&amp;#123;  overflow: hidden;  height: 1px;  font-size: 0;  line-height: 0;&amp;#125; 2.如何解决IE6及更早浏览器浮动是产生双倍边距的bug? 在I">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-26T06:23:52.249Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端兼容性问题总结">
+<meta name="twitter:description" content="前端兼容性问题总结1.如何在IE6及更早浏览器中定义小高度的容器？ IE6及更早浏览器之所以无法直接定义较小高度的容器是因为默认会有行高。 解决方法：    123456#test&amp;#123;  overflow: hidden;  height: 1px;  font-size: 0;  line-height: 0;&amp;#125; 2.如何解决IE6及更早浏览器浮动是产生双倍边距的bug? 在I">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/24/前端兼容性问题总结/"/>
+
+
+
+
+
+  <title>前端兼容性问题总结 | Gjp</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gjp</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总有一个属于你</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      <li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+          function c() {
+              var e = document.createElement("link");
+              e.setAttribute("type", "text/css");
+              e.setAttribute("rel", "stylesheet");
+              e.setAttribute("href", f);
+              e.setAttribute("class", l);
+              document.body.appendChild(e)
+          }
+
+          function h() {
+              var e = document.getElementsByClassName(l);
+              for (var t = 0; t < e.length; t++) {
+                  document.body.removeChild(e[t])
+              }
+          }
+
+          function p() {
+              var e = document.createElement("div");
+              e.setAttribute("class", a);
+              document.body.appendChild(e);
+              setTimeout(function() {
+                  document.body.removeChild(e)
+              }, 100)
+          }
+
+          function d(e) {
+              return {
+                  height : e.offsetHeight,
+                  width : e.offsetWidth
+              }
+          }
+
+          function v(i) {
+              var s = d(i);
+              return s.height > e && s.height < n && s.width > t && s.width < r
+          }
+
+          function m(e) {
+              var t = e;
+              var n = 0;
+              while (!!t) {
+                  n += t.offsetTop;
+                  t = t.offsetParent
+              }
+              return n
+          }
+
+          function g() {
+              var e = document.documentElement;
+              if (!!window.innerWidth) {
+                  return window.innerHeight
+              } else if (e && !isNaN(e.clientHeight)) {
+                  return e.clientHeight
+              }
+              return 0
+          }
+
+          function y() {
+              if (window.pageYOffset) {
+                  return window.pageYOffset
+              }
+              return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+          }
+
+          function E(e) {
+              var t = m(e);
+              return t >= w && t <= b + w
+          }
+
+          function S() {
+              var e = document.createElement("audio");
+              e.setAttribute("class", l);
+              e.src = i;
+              e.loop = false;
+              e.addEventListener("canplay", function() {
+                  setTimeout(function() {
+                      x(k)
+                  }, 500);
+                  setTimeout(function() {
+                      N();
+                      p();
+                      for (var e = 0; e < O.length; e++) {
+                          T(O[e])
+                      }
+                  }, 15500)
+              }, true);
+              e.addEventListener("ended", function() {
+                  N();
+                  h()
+              }, true);
+              e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+              document.body.appendChild(e);
+              e.play()
+          }
+
+          function x(e) {
+              e.className += " " + s + " " + o
+          }
+
+          function T(e) {
+              e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+          }
+
+          function N() {
+              var e = document.getElementsByClassName(s);
+              var t = new RegExp("\\b" + s + "\\b");
+              for (var n = 0; n < e.length; ) {
+                  e[n].className = e[n].className.replace(t, "")
+              }
+          }
+
+          var e = 30;
+          var t = 30;
+          var n = 350;
+          var r = 350;
+          var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+          var s = "mw-harlem_shake_me";
+          var o = "im_first";
+          var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+          var a = "mw-strobe_light";
+          var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+          var l = "mw_added_css";
+          var b = g();
+          var w = y();
+          var C = document.getElementsByTagName("*");
+          var k = null;
+          for (var L = 0; L < C.length; L++) {
+              var A = C[L];
+              if (v(A)) {
+                  if (E(A)) {
+                      k = A;
+                      break
+                  }
+              }
+          }
+          if (A === null) {
+              console.warn("Could not find a node of the right size. Please try a different page.");
+              return
+          }
+          c();
+          S();
+          var O = [];
+          for (var L = 0; L < C.length; L++) {
+              var A = C[L];
+              if (v(A)) {
+                  O.push(A)
+              }
+          }
+      })()    '>High一下</a> </li>
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/24/前端兼容性问题总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gjp">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gjp">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端兼容性问题总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T23:45:00+08:00">
+                2017-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/24/前端兼容性问题总结/" class="leancloud_visitors" data-flag-title="前端兼容性问题总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,765
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前端兼容性问题总结"><a href="#前端兼容性问题总结" class="headerlink" title="前端兼容性问题总结"></a>前端兼容性问题总结</h2><h3 id="1-如何在IE6及更早浏览器中定义小高度的容器？"><a href="#1-如何在IE6及更早浏览器中定义小高度的容器？" class="headerlink" title="1.如何在IE6及更早浏览器中定义小高度的容器？"></a>1.如何在IE6及更早浏览器中定义小高度的容器？</h3><ul>
+<li>IE6及更早浏览器之所以无法直接定义较小高度的容器是因为默认会有行高。<ul>
+<li>解决方法：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#test&#123;</div><div class="line">  overflow: hidden;</div><div class="line">  height: 1px;</div><div class="line">  font-size: 0;</div><div class="line">  line-height: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-如何解决IE6及更早浏览器浮动是产生双倍边距的bug"><a href="#2-如何解决IE6及更早浏览器浮动是产生双倍边距的bug" class="headerlink" title="2.如何解决IE6及更早浏览器浮动是产生双倍边距的bug?"></a>2.如何解决IE6及更早浏览器浮动是产生双倍边距的bug?</h3><ul>
+<li><p>在IE6及更早浏览器出现浮动后margin值解析为双倍的情况，设置改元素的display属性为inline即可。</p>
+ <a id="more"></a>
+<ul>
+<li>解决方法：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#test&#123;</div><div class="line">  _display：inline;//只有IE6 识别</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-如何在IE6及更早浏览器下模拟min-height效果？"><a href="#3-如何在IE6及更早浏览器下模拟min-height效果？" class="headerlink" title="3.如何在IE6及更早浏览器下模拟min-height效果？"></a>3.如何在IE6及更早浏览器下模拟min-height效果？</h3><ul>
+<li>解决:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#test&#123;</div><div class="line">  min-htight: 100px;</div><div class="line">  _height: 100px;</div><div class="line">&#125;</div><div class="line">//注意此时#test不能再设置overflow的值为hidden,否则模拟min-height效果将失效。</div><div class="line">//或者是：</div><div class="line">#test&#123;</div><div class="line">  min-height: 100px;</div><div class="line">  height: auto !important;</div><div class="line">  height: 100px;</div><div class="line">  overflow: visible;</div><div class="line">&#125;</div><div class="line">//因为IE6有一个特性，当定义一个高度时，如果内容超过高度，元素会自动调整高度。</div></pre></td></tr></table></figure>
+<h3 id="4-如何解决按钮在IE7及更早浏览器下随着value增多两边留白也随着增加的问题？"><a href="#4-如何解决按钮在IE7及更早浏览器下随着value增多两边留白也随着增加的问题？" class="headerlink" title="4.如何解决按钮在IE7及更早浏览器下随着value增多两边留白也随着增加的问题？"></a>4.如何解决按钮在IE7及更早浏览器下随着value增多两边留白也随着增加的问题？</h3><ul>
+<li>解决方法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">input,button&#123;</div><div class="line">  *overflow: visible;//IE6、IE7 识别</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="5-如何解决IE7及更早浏览器下当li中出现2个或以上的浮动时，li之间产生的空白间隙的bug"><a href="#5-如何解决IE7及更早浏览器下当li中出现2个或以上的浮动时，li之间产生的空白间隙的bug" class="headerlink" title="5.如何解决IE7及更早浏览器下当li中出现2个或以上的浮动时，li之间产生的空白间隙的bug?"></a>5.如何解决IE7及更早浏览器下当li中出现2个或以上的浮动时，li之间产生的空白间隙的bug?</h3><ul>
+<li>解决方法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#test&#123;</div><div class="line">  *vertical-align: top;</div><div class="line">&#125;</div><div class="line">//除了top值，还可以设置为text-top|middle|bottom|text-bottom,甚至特定的&lt;length&gt;和&lt;percentage&gt;值都可以。</div></pre></td></tr></table></figure>
+<h3 id="6-如何解决IE6及更早浏览器下的3像素BUG"><a href="#6-如何解决IE6及更早浏览器下的3像素BUG" class="headerlink" title="6.如何解决IE6及更早浏览器下的3像素BUG?"></a>6.如何解决IE6及更早浏览器下的3像素BUG?</h3><ul>
+<li>解决方法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">.mian&#123;</div><div class="line">  width: 950px;</div><div class="line">  background: #ccc;</div><div class="line">&#125;</div><div class="line">.content&#123;</div><div class="line">  float: left;</div><div class="line">  width: 750px;</div><div class="line">  height: 100px;</div><div class="line">  background: #eee;</div><div class="line">  _margin-right: -3px;</div><div class="line">&#125;</div><div class="line">.aside&#123;</div><div class="line">  height: 100px;</div><div class="line">  background: #aaa;</div><div class="line">&#125;</div><div class="line">&lt;div class=&quot;main&quot;&gt;</div><div class="line">&lt;div class=&quot;content&quot;&gt;content&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">//在IE6及更早浏览器下为.content设置margin-right: -3px;也可以设置.aside为浮动，最好设置为浮动。</div></pre></td></tr></table></figure>
+<h3 id="7-如何解决IE6下的文本溢出bug"><a href="#7-如何解决IE6下的文本溢出bug" class="headerlink" title="7.如何解决IE6下的文本溢出bug?"></a>7.如何解决IE6下的文本溢出bug?</h3><ul>
+<li>解决方法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">.test&#123;</div><div class="line">  zoom: 1;</div><div class="line">  overflow: hidden;</div><div class="line">  width: 500px;</div><div class="line">&#125;</div><div class="line">.box1&#123;</div><div class="line">  float: left;</div><div class="line">  width: 100px;</div><div class="line">&#125;</div><div class="line">.box2&#123;</div><div class="line">  float: right;</div><div class="line">  width: 300px;</div><div class="line">&#125;</div><div class="line">&lt;div class=&quot;test&quot;&gt;</div><div class="line">	&lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;</div><div class="line">	&lt;!--注释内容--&gt;</div><div class="line">	&lt;div class=&quot;box2&quot;&gt;这就是多出来的那部分&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">//运行如上代码，你会发现文字发生了溢出，在IE6下会多出一部分来。造成此bug的原因可能是多重混合的，如浮动，注释，宽高定义等等。并且注释条数越多，溢出的文本也会随之增多。</div><div class="line"></div><div class="line">//解决的几个方法：</div><div class="line">	//1.删除box1和box2之间所有的注释。</div><div class="line">	//2.不设置浮动。</div><div class="line">	//3.调整box1或box2的宽度，比如将box的宽度调整为90px.</div></pre></td></tr></table></figure>
+<h3 id="8-如何解决IE6使用滤镜PNG图片透明后，容器内连接失效的问题？"><a href="#8-如何解决IE6使用滤镜PNG图片透明后，容器内连接失效的问题？" class="headerlink" title="8.如何解决IE6使用滤镜PNG图片透明后，容器内连接失效的问题？"></a>8.如何解决IE6使用滤镜PNG图片透明后，容器内连接失效的问题？</h3><ul>
+<li>解决方法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">  _filter:progid:DxImagesTransform.Microsoft.AlphalmageLoader(src=&quot;*.png&quot;);</div><div class="line">  width: 300px;</div><div class="line">  height: 100px;</div><div class="line">&#125;</div><div class="line">a&#123;</div><div class="line">  _position:relative;</div><div class="line">&#125;</div><div class="line">//解决方法是为容器内的链接定义相对定位属性position的值为relative</div></pre></td></tr></table></figure>
+<h3 id="9-如何解决IE6无法识别伪对象-first-letter-first-line的问题？"><a href="#9-如何解决IE6无法识别伪对象-first-letter-first-line的问题？" class="headerlink" title="9.如何解决IE6无法识别伪对象:first-letter/:first-line的问题？"></a>9.如何解决IE6无法识别伪对象:first-letter/:first-line的问题？</h3><ul>
+<li>解决方法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//1.增加空格：在伪对象选择符：first-letter/:first-line与包含规则的花括号“&#123;”间增加空格。</div><div class="line">p:first-letter &#123;</div><div class="line">  float:left;</div><div class="line">  font-size: 40px;</div><div class="line">  font-weight:bold;</div><div class="line">&#125;</div><div class="line">p:first-line&#123;color:#090;&#125;</div><div class="line">//2.换行：将整个花括号“&#123;”规则区域换行。细节参见E:first-letter和E：first-line选择符</div><div class="line">p:first-letter</div><div class="line">&#123;float:left;font-size:40px;font-weight:bold;&#125;</div><div class="line">p:first-line</div><div class="line">&#123;color:#090;&#125;</div><div class="line">//伪类中的连字符“-”。IE有个bug，在处理伪类时，如果伪类的名称中带有连字符“-”，伪类名称后面就得跟一个空格，不然样式的定义就无效。</div></pre></td></tr></table></figure>
+<h3 id="10-如何解决IE8会忽略伪对象-first-letter-first-line里的！important规则的问题？"><a href="#10-如何解决IE8会忽略伪对象-first-letter-first-line里的！important规则的问题？" class="headerlink" title="10.如何解决IE8会忽略伪对象:first-letter/:first-line里的！important规则的问题？"></a>10.如何解决IE8会忽略伪对象:first-letter/:first-line里的！important规则的问题？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p:first-letter &#123;float:left;font-size:40px;font-weight:bold;color:#f00!important;color:#090;&#125;</div><div class="line">//如上代码，在IE8下color定义都会失效，原因就是因为有color使用了！important规则，鉴于此，亲尽量不要在:first-letter/:first-line里使用!important规则。</div></pre></td></tr></table></figure>
+<h3 id="11-如何解决IE6会忽略同一条样式体内的！important规则的问题？"><a href="#11-如何解决IE6会忽略同一条样式体内的！important规则的问题？" class="headerlink" title="11.如何解决IE6会忽略同一条样式体内的！important规则的问题？"></a>11.如何解决IE6会忽略同一条样式体内的！important规则的问题？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">div&#123;color:#f00!important;color:#000;&#125;</div><div class="line">//如上代码，IE6及以下浏览器div的文本颜色为#000,!important并没有覆盖后面的规则，也就是说!important被忽略了。解决方案是将样式拆分为2条，请看下一条。</div><div class="line">div&#123;color:#f00!important;&#125;</div><div class="line">div&#123;color:#000;&#125;</div><div class="line">//在上述代码中，IE6及以下浏览器中div的文本颜色表现与其它浏览器一致，都为#f00.</div></pre></td></tr></table></figure>
+<h3 id="12-如何解决IE6及更早浏览器下当li内部元素是定义了display-block的内联元素时底部产生空白的问题？"><a href="#12-如何解决IE6及更早浏览器下当li内部元素是定义了display-block的内联元素时底部产生空白的问题？" class="headerlink" title="12.如何解决IE6及更早浏览器下当li内部元素是定义了display:block的内联元素时底部产生空白的问题？"></a>12.如何解决IE6及更早浏览器下当li内部元素是定义了display:block的内联元素时底部产生空白的问题？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">a,span&#123;display:block;background:#ccc;&#125;</div><div class="line">&lt;ul&gt;</div><div class="line">	&lt;li&gt;&lt;a href=&quot;http://css.doyoe.com/&quot;&gt;CSS参考手册&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=&quot;http://blog.doyoe.com/&quot;&gt;CSS探索之旅&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=&quot;http://demo.doyoe.com/&quot;&gt;web前端实验室&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line">//如上代码，IE6及更早浏览器每个li内部的内联元素底部都会产生空白。解决方案是给li内部的内联元素再加上zoom:1.</div></pre></td></tr></table></figure>
+<h3 id="13-如何解决IE6及更早浏览器下未定义宽度的浮动或绝对定位元素会被内部设置了zoom-1的块元素撑开的问题？"><a href="#13-如何解决IE6及更早浏览器下未定义宽度的浮动或绝对定位元素会被内部设置了zoom-1的块元素撑开的问题？" class="headerlink" title="13.如何解决IE6及更早浏览器下未定义宽度的浮动或绝对定位元素会被内部设置了zoom:1的块元素撑开的问题？"></a>13.如何解决IE6及更早浏览器下未定义宽度的浮动或绝对定位元素会被内部设置了zoom:1的块元素撑开的问题？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#test&#123;zoom:1;overflow:hidden;border:1px solid #ccc;background:#aaa;&#125;</div><div class="line">#test h1&#123;float:left;&#125;</div><div class="line">#test .nav&#123;float:right;background:#bbb;&#125;</div><div class="line">#test .nav ul&#123;zoom:1;overflow:hidden;margin:0;padding:0;list-style:none;&#125;</div><div class="line">#test .nav li&#123;float:left;margin:0 5px;&#125;</div><div class="line">&lt;div id=&quot;test&quot;&gt;</div><div class="line">	&lt;h1&gt;h1标签&lt;/h1&gt;</div><div class="line">	&lt;div class=&quot;nav&quot;&gt;</div><div class="line">		&lt;ul&gt;</div><div class="line">			&lt;li&gt;&lt;a href=&quot;http://www.baidu.com/&quot;&gt;百度&lt;/a&gt;&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;a href=&quot;http://www.google.com/&quot;&gt;谷歌&lt;/a&gt;&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;a href=&quot;http://www.firefox.com/&quot;&gt;火狐&lt;/a&gt;&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">//如上代码，IE6及更早浏览器div.nav会被设置了zoom：1的ul给撑开。</div><div class="line">//解决的几个方法：</div><div class="line">	//1.设置ul为浮动元素</div><div class="line">	//2.设置ul为inline元素</div><div class="line">	//3.设置uld的width</div></pre></td></tr></table></figure>
+<h3 id="14-如何解决IE7及更早浏览器下子元素相对定位时父元素overflow属性的auto-hidden失效的问题？"><a href="#14-如何解决IE7及更早浏览器下子元素相对定位时父元素overflow属性的auto-hidden失效的问题？" class="headerlink" title="14.如何解决IE7及更早浏览器下子元素相对定位时父元素overflow属性的auto|hidden失效的问题？"></a>14.如何解决IE7及更早浏览器下子元素相对定位时父元素overflow属性的auto|hidden失效的问题？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">div&#123;overflow:auto;width:230px;height:90px;border:1px solid #eee;&#125;</div><div class="line">p&#123;position:relative;margin:0;&#125;</div><div class="line">&lt;div&gt;</div><div class="line">	&lt;p&gt;如果我是相对定位，我的父元素overflow属性设置为auto|hidden将失效。如果你使用的是IE及更早浏览器，你将可以看到这个bug&lt;/p&gt;</div><div class="line">	&lt;p&gt;如果我是相对定位，我的父元素overflow属性设置为auto|hidden将失效。如果你使用的是IE及更早浏览器，你将可以看到这个bug&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">//如上代码，在ie7及更早浏览器下你会看到div的滚动条将无法工作.解决方案是给div也设置相对定位position:relative.</div></pre></td></tr></table></figure>
+<h3 id="15-如何解决Chrome在应用transition时页面闪动的问题？"><a href="#15-如何解决Chrome在应用transition时页面闪动的问题？" class="headerlink" title="15.如何解决Chrome在应用transition时页面闪动的问题？"></a>15.如何解决Chrome在应用transition时页面闪动的问题？</h3><h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-webkit-backface-visibility: hidden;//（设置进行转换的元素的背面在面对用户时是否可见：隐藏）</div><div class="line">-webkit-transform-style: preserve-3d; //（设置内嵌的元素在 3D 空间如何呈现：保留 3D ）</div></pre></td></tr></table></figure>
+<h3 id="16-不同浏览器的标签默认的外补丁和内补丁不同，各个浏览器对margin和padding的解析不一致？"><a href="#16-不同浏览器的标签默认的外补丁和内补丁不同，各个浏览器对margin和padding的解析不一致？" class="headerlink" title="16.不同浏览器的标签默认的外补丁和内补丁不同，各个浏览器对margin和padding的解析不一致？"></a>16.不同浏览器的标签默认的外补丁和内补丁不同，各个浏览器对margin和padding的解析不一致？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//设置</div><div class="line">*&#123;margin:0;padding:0;&#125;</div></pre></td></tr></table></figure>
+<h3 id="17-行内属性标签，设置display-block后采用float布局，又有横行的margin的情况，IE6间距bug"><a href="#17-行内属性标签，设置display-block后采用float布局，又有横行的margin的情况，IE6间距bug" class="headerlink" title="17.行内属性标签，设置display:block后采用float布局，又有横行的margin的情况，IE6间距bug?"></a>17.行内属性标签，设置display:block后采用float布局，又有横行的margin的情况，IE6间距bug?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//行内属性标签，为了设置宽高，我们需要设置display:block;(除了input标签比较特殊)。在用float布局并有横向的margin后，在IE6下，他就具有了块属性float后的横向margin的bug。不过因为它本身就是行内属性标签，所以我们再加上display:inline的话，它的高宽就不可设了。这时候我们还需要在display:inline后面加入display:table;</div><div class="line">//在display:block;后面加入*display:inline;*display:table</div></pre></td></tr></table></figure>
+<h3 id="18-几个img标签放在一起的时候，有些浏览器会有默认的间距，加了通配符也不起作用？"><a href="#18-几个img标签放在一起的时候，有些浏览器会有默认的间距，加了通配符也不起作用？" class="headerlink" title="18.几个img标签放在一起的时候，有些浏览器会有默认的间距，加了通配符也不起作用？"></a>18.几个img标签放在一起的时候，有些浏览器会有默认的间距，加了通配符也不起作用？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//使用float属性为img布局(尽量使用)</div><div class="line">//如果使用margin,可能会引起兼容问题(不建议使用)</div></pre></td></tr></table></figure>
+<h3 id="19-火狐与IE对盒模型的解析不一致？"><a href="#19-火狐与IE对盒模型的解析不一致？" class="headerlink" title="19.火狐与IE对盒模型的解析不一致？"></a>19.火狐与IE对盒模型的解析不一致？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//使用：</div><div class="line">box-sizing: border-box;</div></pre></td></tr></table></figure>
+<h3 id="20-在mozilla-firefox和IE中的盒模型解析不一致，导致相差2px解决方法？"><a href="#20-在mozilla-firefox和IE中的盒模型解析不一致，导致相差2px解决方法？" class="headerlink" title="20.在mozilla firefox和IE中的盒模型解析不一致，导致相差2px解决方法？"></a>20.在mozilla firefox和IE中的盒模型解析不一致，导致相差2px解决方法？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">div&#123;margin:30px!important;margin:28px;&#125;</div><div class="line">//注意这两个margin的顺序一定不能写反，!important这个属性IE不能识别，但别的浏览器可以识别，所以IE下其实解析成这样：</div><div class="line">div&#123;margin:30px;margin:28px;&#125;</div><div class="line">//重复定义的话按照最后一个来执行，所以不可以只写margin:xxpx!important;</div></pre></td></tr></table></figure>
+<h3 id="21-ul和ol列表缩进问题？"><a href="#21-ul和ol列表缩进问题？" class="headerlink" title="21.ul和ol列表缩进问题？"></a>21.ul和ol列表缩进问题？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//消除ul、ol等列表的缩进时，样式应写成：list-style:none;margin:0px;padding:0px;</div><div class="line">//其中margin属性对IE有效，padding属性对FireFox有效。</div><div class="line">//在IE中，设置margin:0px;可以去除列表的上下左右缩进、空白以及列表编号或圆点，设置padding对样式没有影响；在Firefox中，设置margin:0px;仅仅可以去除掉上下的空白，设置padding:0px后仅仅可以去掉左右缩进，还必须设置list-style:none才能去除列表编号或圆点。也就是说，在IE中仅仅设置margin:0px即可达到最终效果，而在firefox中必须同时设置margin:0px;padding:0px;以及list-style:none;三项才能达到最终效果。</div></pre></td></tr></table></figure>
+<h3 id="22-字体大小定义不同？"><a href="#22-字体大小定义不同？" class="headerlink" title="22.字体大小定义不同？"></a>22.字体大小定义不同？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//对字体大小small的定义不同，Firefox中为13px,而IE中为16px,差别很大。</div><div class="line">//解决方法： 使用指定的字体大小如：16px.</div><div class="line">//并列排列的对个元素(图片或者链接)的div和div之间，代码中的空格和回车在firefox中都会被忽略，而IE中却默认显示为空格(约3px).</div></pre></td></tr></table></figure>
+<h3 id="23-CSS双线凹凸边框？"><a href="#23-CSS双线凹凸边框？" class="headerlink" title="23.CSS双线凹凸边框？"></a>23.CSS双线凹凸边框？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">IE: </div><div class="line">	border:2px outset;</div><div class="line">FF: </div><div class="line">	-moz-border-top-colors:#d4d0c8 white;</div><div class="line">	-moz-border-left-colors:#d4d0c8 white;</div><div class="line">	-moz-border-right-colors:#303030 #606060;</div><div class="line">	-moz-border-bottom-colors:#303030 #60060;</div></pre></td></tr></table></figure>
+<h3 id="24-IE6里面：如li设宽高，并且li-里面的标签浮动，那么li之间会有间距？"><a href="#24-IE6里面：如li设宽高，并且li-里面的标签浮动，那么li之间会有间距？" class="headerlink" title="24.IE6里面：如li设宽高，并且li 里面的标签浮动，那么li之间会有间距？"></a>24.IE6里面：如li设宽高，并且li 里面的标签浮动，那么li之间会有间距？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//li不设宽、高或者li内的标签不浮动</div><div class="line">*float:none;</div></pre></td></tr></table></figure>
+<h3 id="25-当定义行内元素为包含框时，且包含框包含的绝对定位元素以百分比为单位进行定位时，会出现混乱？"><a href="#25-当定义行内元素为包含框时，且包含框包含的绝对定位元素以百分比为单位进行定位时，会出现混乱？" class="headerlink" title="25.当定义行内元素为包含框时，且包含框包含的绝对定位元素以百分比为单位进行定位时，会出现混乱？"></a>25.当定义行内元素为包含框时，且包含框包含的绝对定位元素以百分比为单位进行定位时，会出现混乱？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">//在行内元素里加入&#123;zoom:1&#125;</div></pre></td></tr></table></figure>
+<h3 id="26-当多个浮动元素中间夹杂着HTML注释语句时，如果浮动元素宽度为100-，则在下一行多显示一个上一行最后一个字符？"><a href="#26-当多个浮动元素中间夹杂着HTML注释语句时，如果浮动元素宽度为100-，则在下一行多显示一个上一行最后一个字符？" class="headerlink" title="26.当多个浮动元素中间夹杂着HTML注释语句时，如果浮动元素宽度为100%，则在下一行多显示一个上一行最后一个字符？"></a>26.当多个浮动元素中间夹杂着HTML注释语句时，如果浮动元素宽度为100%，则在下一行多显示一个上一行最后一个字符？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">//给浮动元素添加： display:inline;</div></pre></td></tr></table></figure>
+<h3 id="27-IE6不支持fixed"><a href="#27-IE6不支持fixed" class="headerlink" title="27.IE6不支持fixed"></a>27.IE6不支持fixed</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">#top&#123;</div><div class="line">  position:fixed;</div><div class="line">  bottom:0;</div><div class="line">  right:20px;</div><div class="line">&#125;</div><div class="line">#top&#123;</div><div class="line">  position:fixed;</div><div class="line">  _position:absolute;</div><div class="line">  top:0;</div><div class="line">  right:20px;</div><div class="line">  _bottom:auto;</div><div class="line">  _top:expression(eval(document.documentElement.scrollTop));</div><div class="line">&#125;</div><div class="line">#html&#123;</div><div class="line">  backgroud-image:url(about:blank);</div><div class="line">  background-attachment:fixed;</div><div class="line">&#125;</div><div class="line">#top&#123;</div><div class="line">  position:absolute;</div><div class="line">  _bottom:auto;</div><div class="line">  _top:expression(eval(document.documentElement.scrollTop));</div><div class="line">&#125;</div><div class="line">#top&#123;</div><div class="line">  _position:absolute;</div><div class="line">  _bottom:auto;</div><div class="line"> _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseint(this.currentStyle.marginTop)||0)-(paresint(this.currentStyle.marginBottom)||0)));</div><div class="line">&#125;</div><div class="line">#top&#123;</div><div class="line">  position:fixed;</div><div class="line">  top:50%;</div><div class="line">  margin-top:-50px;</div><div class="line">  _position:absolute;</div><div class="line"> _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight/2));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="28-解决IE6最大、最小宽高hack方法？"><a href="#28-解决IE6最大、最小宽高hack方法？" class="headerlink" title="28.解决IE6最大、最小宽高hack方法？"></a>28.解决IE6最大、最小宽高hack方法？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.min_width&#123;</div><div class="line">  min-width:300px;</div><div class="line">  _width:expression(parsrint(this.cliemtWidth)&lt;300?&quot;300px&quot;:this.clientWidth);</div><div class="line">&#125;</div><div class="line">.max_width&#123;</div><div class="line">  max-width:600px;</div><div class="line">  _width:expression(parsrint(this.cliemtWidth)&lt;600?&quot;600px&quot;:this.clientWidth);</div><div class="line">&#125;</div><div class="line">.min_height&#123;</div><div class="line">  min-height:300px;</div><div class="line">  _height:expression(parsrint(this.cliemtHeight)&lt;300?&quot;300px&quot;:this.clientHeight);</div><div class="line">&#125;</div><div class="line">.max_height&#123;</div><div class="line">  max-height:600px;</div><div class="line">  _height:expression(parsrint(this.cliemtHeight)&lt;600?&quot;600px&quot;:this.clientHeight);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="29-z-index不起作用的bug"><a href="#29-z-index不起作用的bug" class="headerlink" title="29.z-index不起作用的bug?"></a>29.z-index不起作用的bug?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1.ie6下首先讲讲第一种z-index无论设置多高都不起作用情况。</div><div class="line">	这种情况发生的条件有：</div><div class="line">	a.父标签position属性为relative.</div><div class="line">	b.问题标签含有浮动(float)属性。</div><div class="line">2.所有浏览器：它只认第一个粑粑。</div><div class="line">	层级的高低地不仅要看自己，还要看自己的粑粑这个后台是否够硬，具体描述为：</div><div class="line">	父标签position属性为relative或者absolute时，子标签的absolute属性是相对父标签而言的.而在IE6下，层级的表现有时候不是看子标签的z-index多高，而要看他们的父标签的z-index谁gao谁低。</div></pre></td></tr></table></figure>
+<h3 id="30-CSS选择器区分"><a href="#30-CSS选择器区分" class="headerlink" title="30.CSS选择器区分"></a>30.CSS选择器区分</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//IE6不支持子选择器，先针对IE6使用常规声明CSS选择器，然后再用子选择器(针对IE7+及他浏览器)</div><div class="line">.content&#123;color:red;&#125;</div><div class="line">div&gt;p.content&#123;color:blue;&#125;</div></pre></td></tr></table></figure>
+<h3 id="31-以下三种其实是同一个bug-其实也不算是个bug，举例：父标签高度20，子标签11，垂直居中，20-11-9，9要分给文字的上面与下面，怎么分？IE6就会与其它的不同，所以，尽量避免。"><a href="#31-以下三种其实是同一个bug-其实也不算是个bug，举例：父标签高度20，子标签11，垂直居中，20-11-9，9要分给文字的上面与下面，怎么分？IE6就会与其它的不同，所以，尽量避免。" class="headerlink" title="31.以下三种其实是同一个bug,其实也不算是个bug，举例：父标签高度20，子标签11，垂直居中，20-11=9，9要分给文字的上面与下面，怎么分？IE6就会与其它的不同，所以，尽量避免。"></a>31.以下三种其实是同一个bug,其实也不算是个bug，举例：父标签高度20，子标签11，垂直居中，20-11=9，9要分给文字的上面与下面，怎么分？IE6就会与其它的不同，所以，尽量避免。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a).字体大小为奇数之边框高度少1px.</div><div class="line">	解决方法：字体大小设置为偶数或line-height为偶数。</div><div class="line">b).line-height,文本垂直居中差1px.</div><div class="line">	解决方法：padding-top代替line-height居中，或line-height加1或减1.</div><div class="line">c).与父标签的宽度的奇偶不同的居中造成1px的偏离。</div><div class="line">	解决方法：如果父标签是奇数宽度，则子标签也用奇数宽度；如果父标签偶数宽度，则子标签也用偶数宽度。</div></pre></td></tr></table></figure>
+<h3 id="32-左浮元素margin-bottom失效"><a href="#32-左浮元素margin-bottom失效" class="headerlink" title="32.左浮元素margin-bottom失效"></a>32.左浮元素margin-bottom失效</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">解决方法：显示设置高度or父标签设置_padding-bottom代替子标签的margin-bottom 再放个标签让父标签浮动，子标签margin-bottom,即(margin-bottom与float不同时作用于一个标签)。</div></pre></td></tr></table></figure>
+<h3 id="33-内部盒模型超出父级时，父级被撑大。"><a href="#33-内部盒模型超出父级时，父级被撑大。" class="headerlink" title="33.内部盒模型超出父级时，父级被撑大。"></a>33.内部盒模型超出父级时，父级被撑大。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">父标签使用 overflow:hidden;</div></pre></td></tr></table></figure>
+<h3 id="34-块元素中有文字及右浮动的行元素，行元素换行。"><a href="#34-块元素中有文字及右浮动的行元素，行元素换行。" class="headerlink" title="34.块元素中有文字及右浮动的行元素，行元素换行。"></a>34.块元素中有文字及右浮动的行元素，行元素换行。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">将行元素置于块元素类的文字前</div></pre></td></tr></table></figure>
+<h2 id="35-position下的left-bottom错位"><a href="#35-position下的left-bottom错位" class="headerlink" title="35.position下的left,bottom错位"></a>35.position下的left,bottom错位</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">为父级(relative层)设置宽高或添加*zoom:1</div></pre></td></tr></table></figure>
+<h3 id="36-子及中有设置position-则父级overflow失效"><a href="#36-子及中有设置position-则父级overflow失效" class="headerlink" title="36.子及中有设置position,则父级overflow失效"></a>36.子及中有设置position,则父级overflow失效</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">为父级设置position：relative;</div></pre></td></tr></table></figure>
+<h3 id="37-IE6背景闪烁"><a href="#37-IE6背景闪烁" class="headerlink" title="37.IE6背景闪烁"></a>37.IE6背景闪烁</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">	如果你给链接、按钮用CSS sprites作为背景，你可能会发现在IE6下会有背景图闪烁的现象。造成这个的原因是由于IE6没有见背景图缓存，每次触发hover的实惠都会重新加载，可以用javacript设置缓存这些图片：</div><div class="line">document.</div><div class="line">execCommand(&quot;BackgroundImageCache&quot;,false,true);</div></pre></td></tr></table></figure>
+<h3 id="38-100-高度"><a href="#38-100-高度" class="headerlink" title="38.100%高度"></a>38.100%高度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在IE6下，如果要给元素定义100%高度，必须要明确定义它的父级元素的高度，如果你需要给元素定义满屏的高度，就得先给html和body定义height:100%;</div></pre></td></tr></table></figure>
+<h3 id="39-浮动层错位"><a href="#39-浮动层错位" class="headerlink" title="39.浮动层错位"></a>39.浮动层错位</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">当内容超出外包容器定义的宽度时，在IE6中容器会忽视定义的width值宽度会错误地随内容宽度增长而增长。</div><div class="line">浮动层错位问题在IE6下没有真正让人满意的解决方法，虽然可以使用overflow:hidden;或overflow:scroll;来修正，但hidden容易导致其他一些问题，scroll会破坏设计；javascript也没法很好地解决这个问题。所以建议是一定要在布局上避免这个问题发生，使用一个固定的布局或者控制好内容的宽度(给内层加width).</div></pre></td></tr></table></figure>
+<h3 id="40-躲猫猫bug"><a href="#40-躲猫猫bug" class="headerlink" title="40.躲猫猫bug"></a>40.躲猫猫bug</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">在IE6和IE7下，躲猫猫bug是一个非常恼人的问题。一个撑破了容器的浮动元素，如果在他之后有不浮动的内容，并且有一些定义了：hover的链接当鼠标移到那些链接上时，在IE6下就会触发躲猫猫。</div><div class="line">//解决方法很简单：</div><div class="line">a).在那个未浮动的内容之后添加一个&lt;span style=&quot;clear:both;&quot;&gt;&lt;/span&gt;</div><div class="line">b).触发包含了这些链接的容器的hasLayout,一个简单的方法就是给其定义height:1%;</div></pre></td></tr></table></figure>
+<h3 id="41-绝对定位元素的1像素间距bug"><a href="#41-绝对定位元素的1像素间距bug" class="headerlink" title="41.绝对定位元素的1像素间距bug"></a>41.绝对定位元素的1像素间距bug</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IE6下的这个错误时由于进位处理错误造成(IE7已修复)，当绝对定位元素的父元素高或宽为奇数时，bottom和right会产生错误。唯一的解决办法就是给父元素定义明确的高宽值。</div></pre></td></tr></table></figure>
+<h3 id="42-overflow-BUG"><a href="#42-overflow-BUG" class="headerlink" title="42.overflow BUG"></a>42.overflow BUG</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">在IE6/7中，overflow无法正确的隐藏有相对定位position:relative;的子元素。</div><div class="line">解决方法就是：给外包容器wrap加上position:relative;</div></pre></td></tr></table></figure>
+<h3 id="43-横向列表宽度bug"><a href="#43-横向列表宽度bug" class="headerlink" title="43.横向列表宽度bug"></a>43.横向列表宽度bug</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">如果你使用float:left;把&lt;li&gt;横向摆列，并且&lt;li&gt;内包含的&lt;a&gt;(或者其他)的触发了hasLayout,在IE6下就会有错误的表现。</div><div class="line">解决方法：</div><div class="line">	只需要给&lt;a&gt;定义同样的float：left;即可。</div></pre></td></tr></table></figure>
+<h3 id="44-垂直列表间隙bug"><a href="#44-垂直列表间隙bug" class="headerlink" title="44.垂直列表间隙bug"></a>44.垂直列表间隙bug</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">当我们使用&lt;li&gt;包含一个块级元素时，IE6(IE7也有可能)会错误地给每条列表元素(&lt;li&gt;)之间添加空隙。</div><div class="line">解决方法：</div><div class="line">	把&lt;a&gt;float并且清除float来解决这个问题；另外一个办法就是触发&lt;a&gt;的hasLayout(如定义高度、使用zoom：1;)；也可以给&lt;li&gt;定义display:inline;来解决此问题；另外还有一个极有趣的方法，给包含的文本添加一个空格。</div></pre></td></tr></table></figure>
+<h3 id="45-IE6中的：hover"><a href="#45-IE6中的：hover" class="headerlink" title="45.IE6中的：hover"></a>45.IE6中的：hover</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在IE6中，除了(需要有href属性)才能触发：hover行为，这妨碍了我们实现许多鼠标触碰效果，但还是有一些法子可以解决它的。最好是不要用：hover来实现重要的功能，仅仅只用它来强化效果。</div></pre></td></tr></table></figure>
+<h3 id="46-IE6调整窗口大小的BUG"><a href="#46-IE6调整窗口大小的BUG" class="headerlink" title="46.IE6调整窗口大小的BUG"></a>46.IE6调整窗口大小的BUG</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">当把body居中放置，改变IE浏览器大小的时候，任何在body里面的相对定位元素都会固定不动了。</div><div class="line">解决方法：</div><div class="line">	给body定义position:relative;</div></pre></td></tr></table></figure>
+<h3 id="47-文本重复bug"><a href="#47-文本重复bug" class="headerlink" title="47.文本重复bug"></a>47.文本重复bug</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">在IE6中，一些隐藏的元素(如注释、display:none;的元素)被包含在一个浮动元素里，就有可能引发文本重复bug.</div><div class="line">解决办法:</div><div class="line">	给浮动元素添加：display:inline;</div></pre></td></tr></table></figure>
+<h3 id="48-IE捉迷藏的问题"><a href="#48-IE捉迷藏的问题" class="headerlink" title="48.IE捉迷藏的问题"></a>48.IE捉迷藏的问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">当div应用复杂的时候每个栏中又有一些链接，div等这个时候容易发生捉迷藏的问题。有些内容显示不出来，当鼠标选择这个区域是发现内容确实在页面。</div><div class="line">解决办法：</div><div class="line">	对#layout使用line-height属性或者#layout使用固定高和宽。页面结构尽量简单。</div></pre></td></tr></table></figure>
+<h3 id="49-高度不适应"><a href="#49-高度不适应" class="headerlink" title="49.高度不适应"></a>49.高度不适应</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">高度不适应是当内层对象的高度发生变化时外层高度不能自动进行调节，特别是当内层对象使用margin或padding时。</div><div class="line">例如：#box&#123;background-color:#ccc;&#125;</div><div class="line">#box p&#123;margin-top:20px;margin-bottom:20px;text-align:center;&#125;</div><div class="line">&lt;div id=&quot;box&quot;&gt;&lt;p&gt;p对象中的内容&lt;/p&gt;&lt;/div&gt;</div><div class="line">解决方法：</div><div class="line">	在p对象上下各加2个空的div对象，或者为div加上border属性。</div></pre></td></tr></table></figure>
+<h3 id="50-怎样使一个层垂直居中于浏览器中"><a href="#50-怎样使一个层垂直居中于浏览器中" class="headerlink" title="50.怎样使一个层垂直居中于浏览器中"></a>50.怎样使一个层垂直居中于浏览器中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">这里我们使用百分比绝对定位，与外补丁负值的方法，负值的大小为其自身宽度高度除以2。</div><div class="line">div&#123;</div><div class="line">	position：absolute;</div><div class="line">	top:50%;</div><div class="line">	left:50%;</div><div class="line">	margin:-100px 0 0 -100px;</div><div class="line">	width:200px;</div><div class="line">	height:200px;</div><div class="line">	border: 1px solid blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="51-FireFox下如何使连续长字段自动换行"><a href="#51-FireFox下如何使连续长字段自动换行" class="headerlink" title="51.FireFox下如何使连续长字段自动换行"></a>51.FireFox下如何使连续长字段自动换行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">众所周知IE中直接使用word-wrap:break-word;</div><div class="line">FF中我们使用JS插入&amp;#10;的方法来解决。</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">function toBreakWord(el,intLen)&#123;</div><div class="line">     var obj = document.getElementById(el);</div><div class="line">     var strContent = obj.innerHTML;</div><div class="line">     var strTemp = &quot;&quot;;</div><div class="line">     while(strContent.length&gt;intLen)&#123;</div><div class="line">       strTemp += strContent.substr(0,intLen)+&quot;&amp;#10;&quot;;</div><div class="line">       strContent = strContent.substr(intLen.strContent.length);</div><div class="line">     &#125;</div><div class="line">     strTEMP += &quot;&amp;#10;&quot;+strContent;</div><div class="line">     obj.innerHTML = strTemp;</div><div class="line">&#125;</div><div class="line">if(document.getElementById &amp;&amp; !document.all)</div><div class="line">toBreakWord(&quot;ff&quot;,37);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h3 id="52-经常会用到CSS的position-absolute来使层浮动前通过left-top-right等属性来对层进行定位，但ie6对left-top-right等属性的解析和ie7，ie8及firefox-chrome等不一致。"><a href="#52-经常会用到CSS的position-absolute来使层浮动前通过left-top-right等属性来对层进行定位，但ie6对left-top-right等属性的解析和ie7，ie8及firefox-chrome等不一致。" class="headerlink" title="52.经常会用到CSS的position:absolute来使层浮动前通过left,top,right等属性来对层进行定位，但ie6对left,top,right等属性的解析和ie7，ie8及firefox,chrome等不一致。"></a>52.经常会用到CSS的position:absolute来使层浮动前通过left,top,right等属性来对层进行定位，但ie6对left,top,right等属性的解析和ie7，ie8及firefox,chrome等不一致。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在父层使用position:relative;和padding(当然0值除外)后，ie6中层的定位起始坐标是从padding后的位置算起，而其他则从层的真实位置算起，而非被padding:absolute进行层定位时ie6与其他浏览器的表现不一样。</div></pre></td></tr></table></figure>
+<h3 id="53-绝对定位居中，兼容IE9"><a href="#53-绝对定位居中，兼容IE9" class="headerlink" title="53.绝对定位居中，兼容IE9+"></a>53.绝对定位居中，兼容IE9+</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.posCenter&#123;</div><div class="line">  position:absolute;</div><div class="line">  top：50%；</div><div class="line">  left: 50%;</div><div class="line">  -webkit-transform:translate(-50%,-50%);</div><div class="line">  -moz-transform:translate(-50%,-50%);</div><div class="line">  transform:translate(-50%,-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端开发兼容性问题-问题总结-兼容性-ie6、ie7、ie8等/" rel="tag"><i class="fa fa-tag"></i> 前端开发兼容性问题 问题总结 兼容性 ie6、ie7、ie8等</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/22/js基础-函数/" rel="next" title="js基础--函数">
+                <i class="fa fa-chevron-left"></i> js基础--函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.png"
+              alt="Gjp" />
+          
+            <p class="site-author-name" itemprop="name">Gjp</p>
+            <p class="site-description motion-element" itemprop="description">技术与生活，无尽的世界</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/kezip" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                  
+                    <i class="fa fa-fw fa-google"></i>Google</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/yourname" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端兼容性问题总结"><span class="nav-number">1.</span> <span class="nav-text">前端兼容性问题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-如何在IE6及更早浏览器中定义小高度的容器？"><span class="nav-number">1.1.</span> <span class="nav-text">1.如何在IE6及更早浏览器中定义小高度的容器？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-如何解决IE6及更早浏览器浮动是产生双倍边距的bug"><span class="nav-number">1.2.</span> <span class="nav-text">2.如何解决IE6及更早浏览器浮动是产生双倍边距的bug?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-如何在IE6及更早浏览器下模拟min-height效果？"><span class="nav-number">1.3.</span> <span class="nav-text">3.如何在IE6及更早浏览器下模拟min-height效果？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-如何解决按钮在IE7及更早浏览器下随着value增多两边留白也随着增加的问题？"><span class="nav-number">1.4.</span> <span class="nav-text">4.如何解决按钮在IE7及更早浏览器下随着value增多两边留白也随着增加的问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-如何解决IE7及更早浏览器下当li中出现2个或以上的浮动时，li之间产生的空白间隙的bug"><span class="nav-number">1.5.</span> <span class="nav-text">5.如何解决IE7及更早浏览器下当li中出现2个或以上的浮动时，li之间产生的空白间隙的bug?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-如何解决IE6及更早浏览器下的3像素BUG"><span class="nav-number">1.6.</span> <span class="nav-text">6.如何解决IE6及更早浏览器下的3像素BUG?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-如何解决IE6下的文本溢出bug"><span class="nav-number">1.7.</span> <span class="nav-text">7.如何解决IE6下的文本溢出bug?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-如何解决IE6使用滤镜PNG图片透明后，容器内连接失效的问题？"><span class="nav-number">1.8.</span> <span class="nav-text">8.如何解决IE6使用滤镜PNG图片透明后，容器内连接失效的问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-如何解决IE6无法识别伪对象-first-letter-first-line的问题？"><span class="nav-number">1.9.</span> <span class="nav-text">9.如何解决IE6无法识别伪对象:first-letter/:first-line的问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-如何解决IE8会忽略伪对象-first-letter-first-line里的！important规则的问题？"><span class="nav-number">1.10.</span> <span class="nav-text">10.如何解决IE8会忽略伪对象:first-letter/:first-line里的！important规则的问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-如何解决IE6会忽略同一条样式体内的！important规则的问题？"><span class="nav-number">1.11.</span> <span class="nav-text">11.如何解决IE6会忽略同一条样式体内的！important规则的问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-如何解决IE6及更早浏览器下当li内部元素是定义了display-block的内联元素时底部产生空白的问题？"><span class="nav-number">1.12.</span> <span class="nav-text">12.如何解决IE6及更早浏览器下当li内部元素是定义了display:block的内联元素时底部产生空白的问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-如何解决IE6及更早浏览器下未定义宽度的浮动或绝对定位元素会被内部设置了zoom-1的块元素撑开的问题？"><span class="nav-number">1.13.</span> <span class="nav-text">13.如何解决IE6及更早浏览器下未定义宽度的浮动或绝对定位元素会被内部设置了zoom:1的块元素撑开的问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-如何解决IE7及更早浏览器下子元素相对定位时父元素overflow属性的auto-hidden失效的问题？"><span class="nav-number">1.14.</span> <span class="nav-text">14.如何解决IE7及更早浏览器下子元素相对定位时父元素overflow属性的auto|hidden失效的问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-如何解决Chrome在应用transition时页面闪动的问题？"><span class="nav-number">1.15.</span> <span class="nav-text">15.如何解决Chrome在应用transition时页面闪动的问题？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法："><span class="nav-number">1.15.1.</span> <span class="nav-text">解决方法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-不同浏览器的标签默认的外补丁和内补丁不同，各个浏览器对margin和padding的解析不一致？"><span class="nav-number">1.16.</span> <span class="nav-text">16.不同浏览器的标签默认的外补丁和内补丁不同，各个浏览器对margin和padding的解析不一致？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-行内属性标签，设置display-block后采用float布局，又有横行的margin的情况，IE6间距bug"><span class="nav-number">1.17.</span> <span class="nav-text">17.行内属性标签，设置display:block后采用float布局，又有横行的margin的情况，IE6间距bug?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-几个img标签放在一起的时候，有些浏览器会有默认的间距，加了通配符也不起作用？"><span class="nav-number">1.18.</span> <span class="nav-text">18.几个img标签放在一起的时候，有些浏览器会有默认的间距，加了通配符也不起作用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-火狐与IE对盒模型的解析不一致？"><span class="nav-number">1.19.</span> <span class="nav-text">19.火狐与IE对盒模型的解析不一致？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-在mozilla-firefox和IE中的盒模型解析不一致，导致相差2px解决方法？"><span class="nav-number">1.20.</span> <span class="nav-text">20.在mozilla firefox和IE中的盒模型解析不一致，导致相差2px解决方法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-ul和ol列表缩进问题？"><span class="nav-number">1.21.</span> <span class="nav-text">21.ul和ol列表缩进问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-字体大小定义不同？"><span class="nav-number">1.22.</span> <span class="nav-text">22.字体大小定义不同？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-CSS双线凹凸边框？"><span class="nav-number">1.23.</span> <span class="nav-text">23.CSS双线凹凸边框？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-IE6里面：如li设宽高，并且li-里面的标签浮动，那么li之间会有间距？"><span class="nav-number">1.24.</span> <span class="nav-text">24.IE6里面：如li设宽高，并且li 里面的标签浮动，那么li之间会有间距？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-当定义行内元素为包含框时，且包含框包含的绝对定位元素以百分比为单位进行定位时，会出现混乱？"><span class="nav-number">1.25.</span> <span class="nav-text">25.当定义行内元素为包含框时，且包含框包含的绝对定位元素以百分比为单位进行定位时，会出现混乱？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-当多个浮动元素中间夹杂着HTML注释语句时，如果浮动元素宽度为100-，则在下一行多显示一个上一行最后一个字符？"><span class="nav-number">1.26.</span> <span class="nav-text">26.当多个浮动元素中间夹杂着HTML注释语句时，如果浮动元素宽度为100%，则在下一行多显示一个上一行最后一个字符？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-IE6不支持fixed"><span class="nav-number">1.27.</span> <span class="nav-text">27.IE6不支持fixed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#28-解决IE6最大、最小宽高hack方法？"><span class="nav-number">1.28.</span> <span class="nav-text">28.解决IE6最大、最小宽高hack方法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#29-z-index不起作用的bug"><span class="nav-number">1.29.</span> <span class="nav-text">29.z-index不起作用的bug?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#30-CSS选择器区分"><span class="nav-number">1.30.</span> <span class="nav-text">30.CSS选择器区分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#31-以下三种其实是同一个bug-其实也不算是个bug，举例：父标签高度20，子标签11，垂直居中，20-11-9，9要分给文字的上面与下面，怎么分？IE6就会与其它的不同，所以，尽量避免。"><span class="nav-number">1.31.</span> <span class="nav-text">31.以下三种其实是同一个bug,其实也不算是个bug，举例：父标签高度20，子标签11，垂直居中，20-11=9，9要分给文字的上面与下面，怎么分？IE6就会与其它的不同，所以，尽量避免。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-左浮元素margin-bottom失效"><span class="nav-number">1.32.</span> <span class="nav-text">32.左浮元素margin-bottom失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-内部盒模型超出父级时，父级被撑大。"><span class="nav-number">1.33.</span> <span class="nav-text">33.内部盒模型超出父级时，父级被撑大。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#34-块元素中有文字及右浮动的行元素，行元素换行。"><span class="nav-number">1.34.</span> <span class="nav-text">34.块元素中有文字及右浮动的行元素，行元素换行。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#35-position下的left-bottom错位"><span class="nav-number">2.</span> <span class="nav-text">35.position下的left,bottom错位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#36-子及中有设置position-则父级overflow失效"><span class="nav-number">2.1.</span> <span class="nav-text">36.子及中有设置position,则父级overflow失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#37-IE6背景闪烁"><span class="nav-number">2.2.</span> <span class="nav-text">37.IE6背景闪烁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#38-100-高度"><span class="nav-number">2.3.</span> <span class="nav-text">38.100%高度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#39-浮动层错位"><span class="nav-number">2.4.</span> <span class="nav-text">39.浮动层错位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#40-躲猫猫bug"><span class="nav-number">2.5.</span> <span class="nav-text">40.躲猫猫bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#41-绝对定位元素的1像素间距bug"><span class="nav-number">2.6.</span> <span class="nav-text">41.绝对定位元素的1像素间距bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#42-overflow-BUG"><span class="nav-number">2.7.</span> <span class="nav-text">42.overflow BUG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#43-横向列表宽度bug"><span class="nav-number">2.8.</span> <span class="nav-text">43.横向列表宽度bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#44-垂直列表间隙bug"><span class="nav-number">2.9.</span> <span class="nav-text">44.垂直列表间隙bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#45-IE6中的：hover"><span class="nav-number">2.10.</span> <span class="nav-text">45.IE6中的：hover</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#46-IE6调整窗口大小的BUG"><span class="nav-number">2.11.</span> <span class="nav-text">46.IE6调整窗口大小的BUG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#47-文本重复bug"><span class="nav-number">2.12.</span> <span class="nav-text">47.文本重复bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#48-IE捉迷藏的问题"><span class="nav-number">2.13.</span> <span class="nav-text">48.IE捉迷藏的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#49-高度不适应"><span class="nav-number">2.14.</span> <span class="nav-text">49.高度不适应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#50-怎样使一个层垂直居中于浏览器中"><span class="nav-number">2.15.</span> <span class="nav-text">50.怎样使一个层垂直居中于浏览器中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#51-FireFox下如何使连续长字段自动换行"><span class="nav-number">2.16.</span> <span class="nav-text">51.FireFox下如何使连续长字段自动换行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#52-经常会用到CSS的position-absolute来使层浮动前通过left-top-right等属性来对层进行定位，但ie6对left-top-right等属性的解析和ie7，ie8及firefox-chrome等不一致。"><span class="nav-number">2.17.</span> <span class="nav-text">52.经常会用到CSS的position:absolute来使层浮动前通过left,top,right等属性来对层进行定位，但ie6对left,top,right等属性的解析和ie7，ie8及firefox,chrome等不一致。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#53-绝对定位居中，兼容IE9"><span class="nav-number">2.18.</span> <span class="nav-text">53.绝对定位居中，兼容IE9+</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gjp</span>
+
+  
+</div>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <!--<div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>-->
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共9.5k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("XkKBnqopBLXK1aaDETjF664a-gzGzoHsz", "vmp4iEibX3b38FTiforF0oma");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 音乐播放器 -->
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=32507038&auto=1&height=66"></iframe>
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
